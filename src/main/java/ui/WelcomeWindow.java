@@ -1,5 +1,7 @@
 package ui;
 
+import game.CityRepository;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,18 +10,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.image.BufferedImage;
 
 public class WelcomeWindow extends JFrame {
 
-    public WelcomeWindow() {
+    public WelcomeWindow(CityRepository repository) {
         setTitle("Вітаємо");
-        setSize(400, 130);
+        setSize(400, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        setIconImage(createCustomIcon());
+        setIconImage(IconUtils.createCustomIcon());
 
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 15));
@@ -35,21 +36,11 @@ public class WelcomeWindow extends JFrame {
 
         okButton.addActionListener(_ -> {
             this.dispose();
-            GameWindow gameWindow = new GameWindow();
-            gameWindow.setVisible(true);
+            new GameWindow(repository).setVisible(true);
         });
 
         panel.add(welcomeText);
         panel.add(okButton);
         add(panel, BorderLayout.CENTER);
-    }
-
-    private BufferedImage createCustomIcon() {
-        BufferedImage img = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
-        java.awt.Graphics2D g2d = img.createGraphics();
-        g2d.setColor(Color.BLUE);
-        g2d.fillRect(0, 0, 32, 32);
-        g2d.dispose();
-        return img;
     }
 }
