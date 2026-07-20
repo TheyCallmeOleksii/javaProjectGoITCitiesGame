@@ -12,7 +12,7 @@ public class GameEngine {
     private int computerScore;
 
     public GameEngine(CityRepository repository) {
-        this.availableCities = repository.loadCities();
+        this.availableCities = repository.getCitiesCopy();
         this.usedCities = new HashSet<>();
         this.lastLetter = '\0';
         this.playerScore = 0;

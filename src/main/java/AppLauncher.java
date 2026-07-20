@@ -14,7 +14,6 @@ public class AppLauncher {
         SwingUtilities.invokeLater(() -> {
             try {
                 CityRepository repository = new CityRepository();
-                repository.loadCities();
 
                 WelcomeWindow welcomeWindow = new WelcomeWindow(repository);
                 welcomeWindow.setVisible(true);
