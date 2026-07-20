@@ -9,7 +9,6 @@ public class AppLauncher {
     private AppLauncher() {
     }
 
-    // Глушимо ТІЛЬКИ попередження про невикористаний параметр args, як просив ментор
     @SuppressWarnings("unused")
     static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
